@@ -106,8 +106,8 @@ jobs:
 
       - name: Tiny Tapeout GDS Action for the ULX3S and ULX4M ECP5 FPGA
         # see https://github.com/marketplace/actions/tiny-tapeout-gds-action-for-the-ulx3s-and-ulx4m-ecp5-fpga
-        # uses: ulx3s/tt-gds-action@v0.0.2
-        uses: ulx3s/tt-gds-action@experimental
+        uses: ulx3s/tt-gds-action@v0.0.3
+        # uses: ulx3s/tt-gds-action@experimental
         with:
           ecp5-device: 85k
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
