@@ -105,8 +105,20 @@ jobs:
           submodules: recursive
 
       - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with non-existent lpf)
+        id: missing-lpf
+        continue-on-error: true
         uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
         with:
           ecp5-device: 85k
           lpf: tt/fpga/ulx3s/ulx3s_vnone.lpf
           artifact-name: fpga_ulx3s_ecp5
+
+      - name: Verify missing LPF fails as expected
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.missing-lpf.outcome }}" != "failure" ]; then
+              echo "::error::Expected the missing-LPF build to fail, but outcome was '${{ steps.missing-lpf.outcome }}'."
+              exit 1
+          fi
+          echo "PASS: missing LPF correctly caused the FPGA build to fail."
