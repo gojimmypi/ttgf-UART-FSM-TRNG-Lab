@@ -18,7 +18,7 @@ jobs:
       - name: FPGA bitstream for TT ASIC Sim (ICE40UP5K)
         uses: TinyTapeout/tt-gds-action/fpga/ice40up5k@ttgf26a
 
-  fpga-ulx3s:
+  fpga-ulx3s-v20:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
@@ -26,7 +26,55 @@ jobs:
         with:
           submodules: recursive
 
-      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5)
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5  with v20 modified lpf)
+        uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
+        with:
+          ecp5-device: 85k
+          lpf: tt/fpga/ulx3s/ulx3s_v20.lpf
+          artifact-name: fpga_ulx3s_ecp5
+          uart-enabled: false
+
+  fpga-ulx3s-v20-original:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5  with v20 original lpf)
+        uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
+        with:
+          ecp5-device: 85k
+          lpf: tt/fpga/ulx3s/ulx3s_v20.lpf
+          artifact-name: fpga_ulx3s_ecp5
+          uart-enabled: false
+
+  fpga-ulx3s-v314:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with v314 lpf)
+        uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
+        with:
+          ecp5-device: 85k
+          lpf: tt/fpga/ulx3s/ulx3s_v314.lpf
+          artifact-name: fpga_ulx3s_ecp5
+          uart-enabled: true
+
+  fpga-ulx3s-v316:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with v316 lpf)
         uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
         with:
           ecp5-device: 85k
@@ -34,3 +82,18 @@ jobs:
           artifact-name: fpga_ulx3s_ecp5
           uart-enabled: true
 
+  fpga-ulx3s-vNone:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with non-existent lpf)
+        uses: ulx3s/tt-gds-action/fpga/ulx3s@experimental
+        with:
+          ecp5-device: 85k
+          lpf: tt/fpga/ulx3s/ulx3s_vnone.lpf
+          artifact-name: fpga_ulx3s_ecp5
+          uart-enabled: true
