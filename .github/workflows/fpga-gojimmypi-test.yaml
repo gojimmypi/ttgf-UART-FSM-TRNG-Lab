@@ -35,7 +35,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -44,7 +44,7 @@ jobs:
           artifact-name: fpga_ulx3s_ecp5
           uart-enabled: false
 
-  fpga-ulx3s-v20-original:
+  fpga-ulx3s-v20-50MHz:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
@@ -52,24 +52,23 @@ jobs:
         with:
           submodules: recursive
 
-      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5  with v20 original lpf)
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5  with v20 modified lpf)
         uses: gojimmypi/tt-gds-action/fpga/ulx3s@063a4757e4301761587175f49827cb2f81939a27
         with:
           ecp5-device: 85k
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
-          lpf: tt/fpga/ulx3s/ulx3s_v20.lpf
+          lpf: tt/fpga/ulx3s/ulx3s_v20_gn12_50mhz.lpf
 
           artifact-name: fpga_ulx3s_ecp5
           uart-enabled: false
 
   fpga-ulx3s-v314:
-    if: false  # Temporarily disabled: gp1 unconstrained in LPF  >> TODO
     runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
@@ -84,7 +83,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -108,7 +107,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -116,7 +115,30 @@ jobs:
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
           artifact-name: fpga_ulx3s_ecp5_v316_12k
 
-  fpga-ulx3s-v316:
+  fpga-ulx3s-v316-12k-50MHz:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with v316 lpf)
+        uses: gojimmypi/tt-gds-action/fpga/ulx3s@063a4757e4301761587175f49827cb2f81939a27
+        with:
+          ecp5-device: 12k
+
+          # Override the support tools repository and branch.
+          tools-repo: gojimmypi/tt-support-tools
+          tools-ref: ulx3s # or tools-ref: experimental
+
+          # LPF files come from tools-repo, checked out by the action into tt/.
+          # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
+
+          lpf: tt/fpga/ulx3s/ulx3s_v316_gn12_50mhz.lpf
+          artifact-name: fpga_ulx3s_ecp5_v316_12k
+
+  fpga-ulx3s-v316-85k:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
@@ -131,12 +153,35 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
 
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
+          artifact-name: fpga_ulx3s_ecp5_v316
+
+  fpga-ulx3s-v316-85k-50MHz:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: FPGA bitstream for TT ASIC Sim (ULX3S ECP5 with v316 lpf)
+        uses: gojimmypi/tt-gds-action/fpga/ulx3s@063a4757e4301761587175f49827cb2f81939a27
+        with:
+          ecp5-device: 85k
+
+          # Override the support tools repository and branch.
+          tools-repo: gojimmypi/tt-support-tools
+          tools-ref: ulx3s # or tools-ref: experimental
+
+          # LPF files come from tools-repo, checked out by the action into tt/.
+          # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
+
+          lpf: tt/fpga/ulx3s/ulx3s_v316_gn12_50mhz.lpf
           artifact-name: fpga_ulx3s_ecp5_v316
 
   # Verify that the action honors an explicitly selected older OSS CAD Suite release.
@@ -153,7 +198,7 @@ jobs:
         with:
           ecp5-device: 85k
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
           oss-cad-suite-version: '2026-04-26'
           artifact-name: fpga_ulx3s_ecp5_v316_oss_20260426
@@ -172,7 +217,7 @@ jobs:
         with:
           ecp5-device: 85k
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
           oss-cad-suite-version: '2026-10-14'
           artifact-name: fpga_ulx3s_ecp5_v316_oss_20261014
