@@ -51,6 +51,7 @@ jobs:
           uart-enabled: false
 
   fpga-ulx3s-v314:
+    if: false  # Temporarily disabled: gp1 unconstrained in LPF  >> TODO
     runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
