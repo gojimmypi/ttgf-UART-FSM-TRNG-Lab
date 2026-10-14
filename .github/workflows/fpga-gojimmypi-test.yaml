@@ -35,7 +35,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -59,7 +59,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -84,7 +84,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -108,7 +108,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -131,7 +131,7 @@ jobs:
 
           # Override the support tools repository and branch.
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
 
           # LPF files come from tools-repo, checked out by the action into tt/.
           # See https://github.com/gojimmypi/tt-support-tools/tree/experimental/fpga/ulx3s
@@ -153,7 +153,7 @@ jobs:
         with:
           ecp5-device: 85k
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
           oss-cad-suite-version: '2026-04-26'
           artifact-name: fpga_ulx3s_ecp5_v316_oss_20260426
@@ -172,7 +172,7 @@ jobs:
         with:
           ecp5-device: 85k
           tools-repo: gojimmypi/tt-support-tools
-          tools-ref: experimental
+          tools-ref: ulx3s # or tools-ref: experimental
           lpf: tt/fpga/ulx3s/ulx3s_v316.lpf
           oss-cad-suite-version: '2026-10-14'
           artifact-name: fpga_ulx3s_ecp5_v316_oss_20261014
